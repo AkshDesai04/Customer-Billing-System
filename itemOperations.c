@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "fileIO.c"
 
 int newItem(char* name) {
@@ -22,9 +23,52 @@ int newItem(char* name) {
     return 0;
 }
 
-void main() {
-    printf("main");
-    newItem("Items/John.txt");
-    //createFolder();
-    printf("Finishing");
+int addItem(char* name, int quantity) {
+    printf("1");
+    char filename[strlen(name) * 2], temp[strlen(filename) * 2];
+    char buffer[1024];
+
+    temp[0] = '\0';
+
+    strcpy(filename, name);
+    strcat(filename, ".txt");
+    strcat(temp, "Items/");
+    strcat(temp, filename);
+    strcpy(filename, temp);
+    printf("3");
+
+
+    FILE* filePtr;
+    filePtr = fopen(filename, "r");
+
+    printf("4");
+
+    if (filePtr == NULL) {
+        printf("Error opening file %s\n", filename);
+        return 1;
+    }
+    printf("5");
+
+
+    printf("%s", fgets(buffer, 1024, filePtr));
+    printf("6");
+
+    return 0;
+}
+
+int main() {
+//    printf("main");
+//    newItem("Items/Coffee.txt");
+//    addItem("Coffee", 5);
+//    //createFolder();
+//    printf("Finishing");
+
+//    printf("Hola");
+//    printf("Aksh%sAksh", fileNameCleanup("List/AkshDesai.txt"));
+//    printf("Holalalala");
+
+    printf("ok");
+    addItem("Coffee", 10);
+    printf("ok");
+
 }
