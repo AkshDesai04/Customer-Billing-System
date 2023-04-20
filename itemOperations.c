@@ -9,22 +9,22 @@ int newItem(char* name) {
             return 1;
         }
 
+        char data[strlen(name) * 100];
 
-        char data[strlen(name)];
-//    data = name;
-        printf("strcpy");
-        strcpy(data, name);
-        printf("strcpy");
-//    data[strlen(data) - 4] = (char) "\0"; //removing ".txt" from file name
+        strcat(data, "name: ");
+        strcat(data, name);
+        strcat(data, "\n");
+        strcat(data, "Quantity: 0");
 
-        file_write(name, "Aksh");
+        //TODO: Substring name. Remove everything before the first / and after the last .
 
+        file_write(name, data);
     return 0;
 }
 
 void main() {
     printf("main");
-    newItem("Items/Aksh.txt");
+    newItem("Items/John.txt");
     //createFolder();
     printf("Finishing");
 }
