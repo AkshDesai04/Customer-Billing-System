@@ -77,10 +77,43 @@ void deleteFile(char* file_name) {
         printf("Error");
 }
 
-int main() {
+
+void printLineNumber(char* file_name, int line_number) {
+    FILE *fp;
+    char line[100];
+    int n, i;
+
+    // Open the file for reading
+    fp = fopen(file_name, "r");
+    if (fp == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    // Read the file and return the specified line
+    for (i = 1; i <= line_number; i++)
+    {
+        if (fgets(line, sizeof(line), fp) == NULL)
+        {
+            printf("Error: line not found.\n");
+            fclose(fp);
+            return;
+        }
+    }
+
+    printf("Line %d: %s", line_number, line);
+
+    // Close the file
+    fclose(fp);
+    return;
+}
+
+
+//int main() {
 //    printf("main");
 //    newItem("Items/Tea.txt", "100", "10");
-    deleteFile("Items/Coffee.txt");
+//    deleteFile("Items/Coffee.txt");
 //    addItem("Coffee", 5);
 //    //createFolder();
 //    printf("Finishing");
@@ -92,6 +125,7 @@ int main() {
 //    printf("ok");
 //    addItem("Coffee", 10);
 //    printf("ok");
-    printFolderItems("Items");
-    return 0;
-}
+//    printFolderItems("Items");
+//    printLineNumber("Items/Tea.txt", 2);
+//    return 0;
+//}
