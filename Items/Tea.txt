@@ -1,0 +1,3 @@
+name: Items/Tea.txt
+Price: 10
+Quantity: 100

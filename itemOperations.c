@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include <dirent.h>
+
 #include "fileIO.c"
 
 int newItem(char* name, char* quantity, char* price) {
-    printf("newItem");
-
         if (create_file(name) != 0) {
             printf("Failed to create file\n");
             return 1;
@@ -13,39 +13,21 @@ int newItem(char* name, char* quantity, char* price) {
         char data[strlen(name) * 100];
 
         strcat(data, "name: ");
-    printf("1");
-
         strcat(data, name);
-    printf("2");
-
         strcat(data, "\n");
-    printf("3");
-
         strcat(data, "Price: ");
-    printf("4");
-
         strcat(data, price);
-    printf("5");
-
         strcat(data, "\n");
-    printf("6");
-
         strcat(data, "Quantity: ");
-    printf("7");
-
         strcat(data, quantity);
-    printf("8");
-
-
-    printf("9");
-    printf("%s", &data);
-    printf("10");
 
         //TODO: Substring name. Remove everything before the first / and after the last .
 
         file_write(name, data);
     return 0;
 }
+
+
 
 int addItem(char* name, int quantity) {
     char filename[strlen(name) * 5], temp[strlen(filename) * 5];
@@ -72,9 +54,25 @@ int addItem(char* name, int quantity) {
     return 0;
 }
 
+void printFolderItems(char* folderName) {
+    DIR *d;
+    int x;
+    struct dirent *dir;
+    d = opendir(folderName);
+    if (d) {
+        while ((dir = readdir(d)) != NULL) {
+            x = strlen(dir->d_name) - 4;
+            for(int i = 0;i < x;i++)
+                printf("%c", dir->d_name[i]);
+            printf("\n");
+        }
+        closedir(d);
+    }
+}
+
 int main() {
 //    printf("main");
-//    newItem("Items/Coffee.txt", "10", "69.420");
+    newItem("Items/Tea.txt", "100", "10");
 //    addItem("Coffee", 5);
 //    //createFolder();
 //    printf("Finishing");
@@ -86,4 +84,6 @@ int main() {
 //    printf("ok");
 //    addItem("Coffee", 10);
 //    printf("ok");
+    printFolderItems("Items");
+    return 0;
 }
