@@ -25,7 +25,7 @@ int newItem(char* name) {
 
 int addItem(char* name, int quantity) {
     printf("1");
-    char filename[strlen(name) * 2], temp[strlen(filename) * 2];
+    char filename[strlen(name) * 5], temp[strlen(filename) * 5];
     char buffer[1024];
 
     temp[0] = '\0';
@@ -34,8 +34,12 @@ int addItem(char* name, int quantity) {
     strcat(filename, ".txt");
     strcat(temp, "Items/");
     strcat(temp, filename);
+    printf("output");
     strcpy(filename, temp);
-    printf("3");
+    printf("output");
+    strcpy(filename, temp);
+    printf("outputaksh");
+
 
 
     FILE* filePtr;
@@ -48,9 +52,7 @@ int addItem(char* name, int quantity) {
         return 1;
     }
     printf("5");
-
-
-    printf("%s", fgets(buffer, 1024, filePtr));
+    printf("\n\n\n\n\n---*\n%s\n*---", fgets(buffer, 1024, filePtr));
     printf("6");
 
     return 0;
