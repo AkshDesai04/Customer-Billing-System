@@ -70,9 +70,17 @@ void printFolderItems(char* folderName) {
     }
 }
 
+void deleteFile(char* file_name) {
+    if(remove(file_name) == 0)
+        printf("Removed successfully");
+    else
+        printf("Error");
+}
+
 int main() {
 //    printf("main");
-    newItem("Items/Tea.txt", "100", "10");
+//    newItem("Items/Tea.txt", "100", "10");
+    deleteFile("Items/Coffee.txt");
 //    addItem("Coffee", 5);
 //    //createFolder();
 //    printf("Finishing");
