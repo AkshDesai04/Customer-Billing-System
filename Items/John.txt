@@ -1,2 +1,0 @@
-name: Items/John.txt
-Quantity: 0

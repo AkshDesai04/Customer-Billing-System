@@ -1,2 +1,3 @@
 name: Items/Coffee.txt
-Quantity: 0
+Price: 69.420
+Quantity: 10

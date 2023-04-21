@@ -38,5 +38,6 @@ void main() {
 }
 
 void displayAvailableItems() {
-    printf(listItemsFromFile("list.txt"));
+//    printf(listItemsFromFile("list.txt"));
+//    TODO:Print all file names in Items directory without the ".txt" extention
 }
